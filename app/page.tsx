@@ -1,69 +1,89 @@
-import Image from "next/image";
+import { PortfolioCard } from "@/components/PortfolioCard";
+import { Dock } from "@/components/Dock";
+
+const projects = [
+  {
+    title: "Aqua Flow",
+    description: "Vibrant water ripple physics engine with real-time refraction.",
+    type: "aqua-flow" as const,
+  },
+  {
+    title: "Lush Orbit",
+    description: "Nature-inspired 3D visualization for environmental data.",
+    type: "lush-orbit" as const,
+  },
+  {
+    title: "Metal Mesh",
+    description: "Industrial interface design system for heavy machinery.",
+    type: "metal-mesh" as const,
+  },
+  {
+    title: "Crystal Prism",
+    description: "Geometric refractive optics study and generative art.",
+    type: "crystal-prism" as const,
+  },
+  {
+    title: "Sunburst Lens",
+    description: "High-dynamic range lighting effects for modern web apps.",
+    type: "sunburst-lens" as const,
+  },
+  {
+    title: "Gel Buttons",
+    description: "Tactile interaction design library for mobile interfaces.",
+    type: "gel-button" as const,
+  },
+  {
+    title: "Aurora Wave",
+    description: "Fluid gradient background generator with motion physics.",
+    type: "aurora-wave" as const,
+  },
+  {
+    title: "Frosted Pane",
+    description: "Glassmorphic UI component set with realistic blur.",
+    type: "frosted-pane" as const,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="flex-1 w-full max-w-7xl mx-auto px-6 py-20 pb-48">
+      {/* Hero Section */}
+      <header className="mb-32 text-center animate-in fade-in slide-in-from-top-10 duration-1000">
+        <div className="inline-block px-4 py-1 rounded-full bg-white/40 backdrop-blur-md border border-white/60 text-blue-600 text-sm font-semibold mb-6 skeuo-bezel">
+          Design Showcase 2026
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <h1 className="text-7xl md:text-9xl font-black tracking-tight mb-8 aero-text">
+          AeroSkeuo
+        </h1>
+        <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          A responsive portfolio blending the vibrant energy of{" "}
+          <span className="text-blue-500 font-bold">Frutiger Aero</span> with the
+          meticulous precision of{" "}
+          <span className="text-gray-900 font-bold">early 2010s Apple</span> design.
+        </p>
+      </header>
+
+      {/* Grid Section */}
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className="animate-in fade-in zoom-in-95 duration-700"
+            style={{ animationDelay: `${index * 100}ms`, animationFillMode: "both" }}
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            <PortfolioCard {...project} />
+          </div>
+        ))}
+      </section>
+
+      {/* Footer / Contact */}
+      <footer className="mt-40 text-center text-gray-400 text-sm">
+        <p>© 2026 AeroSkeuo Design. All rights reserved.</p>
+        <p className="mt-2 italic">Crafted with gloss and glass.</p>
+      </footer>
+
+      {/* Navigation */}
+      <Dock />
+    </main>
   );
 }
